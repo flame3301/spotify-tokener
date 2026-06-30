@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"log/slog"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -17,13 +18,16 @@ const (
 )
 
 var (
+	port       = os.Getenv("PORT")
 	addr       = os.Getenv("SPOTIFY_TOKENER_ADDR")
 	chromePath = os.Getenv("SPOTIFY_TOKENER_CHROME_PATH")
 	logLevel   = os.Getenv("SPOTIFY_TOKENER_LOG_LEVEL")
 )
 
 func main() {
-	if addr == "" {
+	if port != "" {
+		addr = net.JoinHostPort("0.0.0.0", port)
+	} else if addr == "" {
 		addr = "0.0.0.0:8080"
 	}
 	if logLevel != "" {

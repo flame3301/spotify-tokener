@@ -30,7 +30,7 @@ services:
     container_name: spotify-tokener
     restart: unless-stopped
     environment:
-#      - SPOTIFY_TOKENER_ADDR=0.0.0.0:8080
+  #      - PORT=8080
 #      - SPOTIFY_TOKENER_CHROME_PATH=chrome
 #      - SPOTIFY_TOKENER_LOG_LEVEL=INFO
     ports:
